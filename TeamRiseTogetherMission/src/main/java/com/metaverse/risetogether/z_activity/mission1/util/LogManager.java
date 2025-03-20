@@ -5,6 +5,7 @@ import com.metaverse.risetogether.z_activity.mission1.model.Book;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LogManager {
@@ -14,6 +15,11 @@ public class LogManager {
 
     public static void logTransaction(String record, String filePath){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+
+            if (books == null){
+                books = new ArrayList<>();
+            }
+
             // record를 파일에 기록
             bw.write(record);
             bw.newLine();
